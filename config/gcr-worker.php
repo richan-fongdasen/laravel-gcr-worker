@@ -14,7 +14,6 @@ return [
 
     'allow_pubsub_invocation' => (bool) env('ALLOW_PUBSUB_INVOCATION', false),
 
-
     /*
     |--------------------------------------------------------------------------
     | Path prefix

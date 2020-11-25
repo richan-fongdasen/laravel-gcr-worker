@@ -35,8 +35,9 @@ class PubSubEvent
     /**
      * PubSubEvent constructor.
      *
-     * @param Container $container
+     * @param Container       $container
      * @param PubSubConnector $connector
+     *
      * @throws ErrorException
      */
     public function __construct(Container $container, PubSubConnector $connector)
@@ -50,6 +51,7 @@ class PubSubEvent
      * Create a new Pub/Sub job based on the given Pub/Sub message.
      *
      * @param Message $message
+     *
      * @return PubSubJob
      */
     protected function createJob(Message $message): PubSubJob
@@ -66,8 +68,9 @@ class PubSubEvent
     /**
      * Get the PubSubQueue instance.
      *
-     * @return PubSubQueue
      * @throws ErrorException
+     *
+     * @return PubSubQueue
      */
     protected function getQueue(): PubSubQueue
     {

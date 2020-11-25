@@ -15,7 +15,7 @@ class PubSubEventHandlingTest extends TestCase
         $this->postJson('/gcr-worker/pub-sub/event-handler', $data)
             ->assertStatus(403);
     }
-    
+
     /** @test */
     public function it_can_handle_pubsub_invocation_as_expected()
     {
