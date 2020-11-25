@@ -1,0 +1,18 @@
+{
+  "app.key": "base64:j076I6WwI4zJtD2kiHphfzqx265BsZLQjixQVRMQNJs=",
+  "cache.default": "array",
+  "database.default": "testbench",
+  "database.connections.testbench": {
+    "driver": "sqlite",
+    "database": ":memory:",
+    "prefix": ""
+  },
+  "queue.connections.pubsub": {
+    "driver": "pubsub",
+    "queue": "my-dummy-queue",
+    "project_id": "my-dummy-gcp-project",
+    "retries": 3,
+    "request_timeout": 60,
+    "subscriber": "my-dummy-pubsub-subscriber"
+  }
+}
