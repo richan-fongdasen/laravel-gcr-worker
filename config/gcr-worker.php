@@ -15,7 +15,6 @@ return [
 
     'allow_event_invocation' => (bool) env('ALLOW_EVENT_INVOCATION', false),
 
-
     /*
     |--------------------------------------------------------------------------
     | Maximum Execution Time
@@ -31,7 +30,6 @@ return [
 
     'max_execution_time' => 60 * 15,
 
-
     /*
     |--------------------------------------------------------------------------
     | Middleware
@@ -45,7 +43,6 @@ return [
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
         \RichanFongdasen\GCRWorker\Middleware\AllowEventInvocation::class,
     ],
-
 
     /*
     |--------------------------------------------------------------------------
