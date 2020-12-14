@@ -32,7 +32,7 @@ $ composer require richan-fongdasen/laravel-gcr-worker
 
 | Laravel version | Package version   |
 | :-------------- | :---------------- |
-| 8.x             | 1.x               |
+| 5.7 - 8.x       | 1.x               |
 
 ## Configuration
 
