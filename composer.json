@@ -1,0 +1,87 @@
+{
+  "name": "richan-fongdasen/laravel-gcr-worker",
+  "description": "Easily generates RESTful API endpoints in Laravel",
+  "type": "library",
+  "license": "MIT",
+  "homepage": "https://github.com/richan-fongdasen/laravel-gcr-worker",
+  "keywords": [
+    "laravel",
+    "laravel-package"
+  ],
+  "authors": [
+    {
+      "name": "Richan Fongdasen",
+      "email": "richan.fongdasen@gmail.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/richan-fongdasen/laravel-gcr-worker/issues",
+    "source": "https://github.com/richan-fongdasen/laravel-gcr-worker"
+  },
+  "require": {
+    "php": ">=7.2",
+    "illuminate/queue": "5.7.* || 5.8.* || ^6.0 || ^7.0 || ^8.0",
+    "illuminate/support": "5.7.* || 5.8.* || ^6.0 || ^7.0 || ^8.0",
+    "kainxspirits/laravel-pubsub-queue": "^0.5"
+  },
+  "require-dev": {
+    "ekino/phpstan-banned-code": "^0.3.1",
+    "mockery/mockery": "^1.3",
+    "nunomaduro/larastan": "^0.6.1",
+    "orchestra/testbench": "^6.0 || ^5.0 || ^4.0 || 3.8.* || 3.7.*",
+    "phpmd/phpmd": "^2.8",
+    "phpstan/phpstan-deprecation-rules": "^0.12.2",
+    "phpunit/phpunit": "^9.0 || ^8.0 || ^7.0",
+    "sebastian/phpcpd": "^6.0"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "RichanFongdasen\\GCRWorker\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Jobs\\": "dummies",
+      "RichanFongdasen\\GCRWorker\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "RichanFongdasen\\GCRWorker\\ServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "analyse": [
+      "composer check-syntax",
+      "composer phpstan-analysis",
+      "composer phpmd-analysis",
+      "vendor/bin/phpcpd --min-lines=3 --min-tokens=36 src/"
+    ],
+    "check-syntax": [
+      "! find src -type f -name \"*.php\" -exec php -l {} \\; |  grep -v 'No syntax errors'",
+      "! find tests -type f -name \"*.php\" -exec php -l {} \\; |  grep -v 'No syntax errors'"
+    ],
+    "phpstan-analysis": [
+      "vendor/bin/phpstan analyse -c phpstan.neon --no-progress"
+    ],
+    "phpmd-analysis": [
+      "vendor/bin/phpmd src text codesize,controversial,design,naming,unusedcode,.phpmd.cleancode.xml"
+    ],
+    "cov-text": [
+      "phpdbg -qrr vendor/bin/phpunit --coverage-text"
+    ],
+    "cov-html": [
+      "phpdbg -qrr vendor/bin/phpunit --coverage-html coverage"
+    ],
+    "test": [
+      "vendor/bin/phpunit"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
