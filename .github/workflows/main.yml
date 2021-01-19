@@ -31,6 +31,12 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+          coverage: none
       - name: Install composer dependencies
         run: composer install --prefer-dist
       - name: Run phpstan analysis
@@ -47,6 +53,12 @@ jobs:
         php: [ 7.2, 7.3, 7.4 ]
     steps:
       - uses: actions/checkout@v1
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+          coverage: none
       - name: Update laravel version
         run: composer require "laravel/framework:5.7.*" "orchestra/testbench:3.7.*" --no-update
       - name: Remove some dev dependencies
@@ -63,6 +75,12 @@ jobs:
         php: [ 7.2, 7.3, 7.4 ]
     steps:
       - uses: actions/checkout@v1
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+          coverage: none
       - name: Update laravel version
         run: composer require "laravel/framework:5.8.*" "orchestra/testbench:3.8.*" --no-update
       - name: Remove some dev dependencies
@@ -71,7 +89,7 @@ jobs:
         run: composer install --prefer-dist
       - name: Run the test suite
         run: phpdbg -qrr -dmemory_limit=3G vendor/bin/phpunit
-  laravel60:
+  laravel6:
     needs: [ analysis ]
     runs-on: ubuntu-latest
     strategy:
@@ -79,6 +97,12 @@ jobs:
         php: [ 7.2, 7.3, 7.4 ]
     steps:
       - uses: actions/checkout@v1
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+          coverage: none
       - name: Update laravel version
         run: composer require "laravel/framework:^6.0" "orchestra/testbench:^4.0" --no-update
       - name: Remove some dev dependencies
@@ -87,7 +111,7 @@ jobs:
         run: composer install --prefer-dist
       - name: Run the test suite
         run: phpdbg -qrr -dmemory_limit=3G vendor/bin/phpunit
-  laravel70:
+  laravel7:
     needs: [ analysis ]
     runs-on: ubuntu-latest
     strategy:
@@ -95,6 +119,12 @@ jobs:
         php: [ 7.2, 7.3, 7.4 ]
     steps:
       - uses: actions/checkout@v1
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+          coverage: none
       - name: Update laravel version
         run: composer require "laravel/framework:^7.0" "orchestra/testbench:^5.0" --no-update
       - name: Remove some dev dependencies
@@ -103,12 +133,32 @@ jobs:
         run: composer install --prefer-dist
       - name: Run the test suite
         run: phpdbg -qrr -dmemory_limit=3G vendor/bin/phpunit
-  laravel80:
+  laravel8:
     needs: [analysis]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: [7.4]
+        php: [8.0]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+          coverage: none
+      - name: Remove some dev dependencies
+        run: composer remove "ekino/phpstan-banned-code" "nunomaduro/larastan" "phpmd/phpmd" "phpstan/phpstan-deprecation-rules" "sebastian/phpcpd" --dev --no-update
+      - name: Install composer dependencies
+        run: composer install --prefer-dist
+      - name: Run the test suite
+        run: phpdbg -qrr -dmemory_limit=3G vendor/bin/phpunit
+  laravel8-cov:
+    needs: [ analysis ]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: [ 7.4 ]
     steps:
       - uses: actions/checkout@v1
       - name: Cache composer dependencies
@@ -122,6 +172,12 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+          coverage: none
       - name: Install composer dependencies
         run: composer install --prefer-dist
       - name: Run the Coverage test suite
