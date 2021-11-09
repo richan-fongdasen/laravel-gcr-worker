@@ -46,7 +46,7 @@ abstract class TestCase extends BaseTest
         $this->app = $app;
 
         return [
-            'Route' => \Illuminate\Support\Facades\Route::class,
+            'Route'    => \Illuminate\Support\Facades\Route::class,
             'GcrQueue' => GcrQueue::class,
         ];
     }

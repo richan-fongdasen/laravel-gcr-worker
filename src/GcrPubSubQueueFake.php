@@ -23,6 +23,7 @@ class GcrPubSubQueueFake
      * GcrPubSubQueue constructor.
      *
      * @param PubSubConnector $connector
+     *
      * @throws \ErrorException
      */
     public function __construct(PubSubConnector $connector)
