@@ -68,6 +68,7 @@ class GcrPubSubQueueFake
      * Pull a specific PubSub message from PubSub topic specified by the given message id.
      *
      * @param Message $original
+     *
      * @return Message
      */
     public function pullFreshMessage(Message $original): Message
