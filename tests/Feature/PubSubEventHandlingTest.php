@@ -3,6 +3,7 @@
 namespace RichanFongdasen\GCRWorker\Tests\Feature;
 
 use Illuminate\Support\Facades\Cache;
+use RichanFongdasen\GCRWorker\Facade\GcrQueue;
 use RichanFongdasen\GCRWorker\Tests\TestCase;
 
 class PubSubEventHandlingTest extends TestCase
@@ -19,6 +20,8 @@ class PubSubEventHandlingTest extends TestCase
     /** @test */
     public function it_can_handle_pubsub_invocation_as_expected()
     {
+        GcrQueue::fake();
+
         config(['gcr-worker.allow_event_invocation' => true]);
 
         $data = json_decode(file_get_contents(dirname(__DIR__, 2).'/dummies/message.json'), true);
@@ -28,6 +31,9 @@ class PubSubEventHandlingTest extends TestCase
         $this->postJson('/gcr-worker/pub-sub/event-handler', $data)
             ->assertStatus(200)
             ->assertJsonFragment(['info' => 'The Pub/Sub queued job has completed.']);
+
+        GcrQueue::assertAcknowledgedMessagesCount(1);
+        GcrQueue::assertMessageHasAcknowledged('1777817206939726');
 
         self::assertEquals('completed', Cache::get('dummy-job-status'));
     }

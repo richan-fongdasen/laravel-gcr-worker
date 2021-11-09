@@ -52,7 +52,10 @@
     "laravel": {
       "providers": [
         "RichanFongdasen\\GCRWorker\\ServiceProvider"
-      ]
+      ],
+      "aliases": {
+        "GcrQueue": "RichanFongdasen\\GCRWorker\\Facade\\GcrQueue"
+      }
     }
   },
   "scripts": {

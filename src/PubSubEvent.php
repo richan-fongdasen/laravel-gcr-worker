@@ -2,22 +2,13 @@
 
 namespace RichanFongdasen\GCRWorker;
 
-use ErrorException;
 use Google\Cloud\PubSub\Message;
 use Illuminate\Container\Container;
-use Kainxspirits\PubSubQueue\Connectors\PubSubConnector;
 use Kainxspirits\PubSubQueue\Jobs\PubSubJob;
-use Kainxspirits\PubSubQueue\PubSubQueue;
+use RichanFongdasen\GCRWorker\Facade\GcrQueue;
 
 class PubSubEvent
 {
-    /**
-     * Pub/Sub connector instance.
-     *
-     * @var PubSubConnector
-     */
-    protected $connector;
-
     /**
      * Laravel IOC Container instance.
      *
@@ -26,25 +17,13 @@ class PubSubEvent
     protected $container;
 
     /**
-     * Pub/Sub queue instance.
-     *
-     * @var PubSubQueue
-     */
-    protected $queue;
-
-    /**
      * PubSubEvent constructor.
      *
-     * @param Container       $container
-     * @param PubSubConnector $connector
-     *
-     * @throws ErrorException
+     * @param Container $container
      */
-    public function __construct(Container $container, PubSubConnector $connector)
+    public function __construct(Container $container)
     {
         $this->container = $container;
-        $this->connector = $connector;
-        $this->queue = $this->getQueue();
     }
 
     /**
@@ -58,29 +37,11 @@ class PubSubEvent
     {
         return new PubSubJob(
             $this->container,
-            $this->queue,
+            GcrQueue::getPubSubQueue(),
             $message,
             config('queue.connections.pubsub.driver'),
             config('queue.connections.pubsub.queue')
         );
-    }
-
-    /**
-     * Get the PubSubQueue instance.
-     *
-     * @throws ErrorException
-     *
-     * @return PubSubQueue
-     */
-    protected function getQueue(): PubSubQueue
-    {
-        $queue = $this->connector->connect(config('queue.connections.pubsub'));
-
-        if (!($queue instanceof PubSubQueue)) {
-            throw new ErrorException('Failed to retrieve PubSubQueue instance.');
-        }
-
-        return $queue;
     }
 
     /**
@@ -91,6 +52,8 @@ class PubSubEvent
     public function handle(Message $message): void
     {
         set_time_limit(config('gcr-worker.max_execution_time'));
+
+        GcrQueue::acknowledge($message);
 
         $this->createJob($message)->fire();
     }

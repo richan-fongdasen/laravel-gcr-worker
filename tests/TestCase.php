@@ -3,6 +3,7 @@
 namespace RichanFongdasen\GCRWorker\Tests;
 
 use Orchestra\Testbench\TestCase as BaseTest;
+use RichanFongdasen\GCRWorker\Facade\GcrQueue;
 
 abstract class TestCase extends BaseTest
 {
@@ -46,6 +47,7 @@ abstract class TestCase extends BaseTest
 
         return [
             'Route' => \Illuminate\Support\Facades\Route::class,
+            'GcrQueue' => GcrQueue::class,
         ];
     }
 
