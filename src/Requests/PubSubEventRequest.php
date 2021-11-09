@@ -4,6 +4,7 @@ namespace RichanFongdasen\GCRWorker\Requests;
 
 use Google\Cloud\PubSub\Message;
 use Illuminate\Foundation\Http\FormRequest;
+use RichanFongdasen\GCRWorker\Facade\GcrQueue;
 
 class PubSubEventRequest extends FormRequest
 {
@@ -27,7 +28,9 @@ class PubSubEventRequest extends FormRequest
         $requestData = $this->all();
         $requestData['message']['data'] = base64_decode($requestData['message']['data']);
 
-        return new Message($requestData['message']);
+        $message = new Message($requestData['message']);
+
+        return GcrQueue::pullFreshMessage($message);
     }
 
     /**
