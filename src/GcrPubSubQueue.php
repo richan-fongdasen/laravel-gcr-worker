@@ -2,7 +2,6 @@
 
 namespace RichanFongdasen\GCRWorker;
 
-use ErrorException;
 use Google\Cloud\PubSub\Message;
 use Kainxspirits\PubSubQueue\Connectors\PubSubConnector;
 use RichanFongdasen\GCRWorker\Concerns\CreatesPubSubQueue;
@@ -39,8 +38,6 @@ class GcrPubSubQueue
      *
      * @param Message $original
      *
-     * @throws ErrorException
-     *
      * @return Message
      */
     public function pullFreshMessage(Message $original): Message
@@ -59,6 +56,6 @@ class GcrPubSubQueue
             }
         }
 
-        throw new ErrorException(sprintf('Failed to pull a PubSub message with id "%s"', $original->id()));
+        abort(409, sprintf('Failed to pull a PubSub message with id "%s"', $original->id()));
     }
 }
