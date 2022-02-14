@@ -13,14 +13,14 @@ trait CreatesPubSubQueue
      *
      * @var PubSubConnector
      */
-    protected $connector;
+    protected PubSubConnector $connector;
 
     /**
      * The base PubSubQueue instance.
      *
      * @var PubSubQueue
      */
-    protected $pubSub;
+    protected PubSubQueue $pubSub;
 
     /**
      * Create the PubSubQueue instance.

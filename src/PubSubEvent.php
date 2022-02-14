@@ -14,7 +14,7 @@ class PubSubEvent
      *
      * @var Container
      */
-    protected $container;
+    protected Container $container;
 
     /**
      * PubSubEvent constructor.

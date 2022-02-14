@@ -17,7 +17,7 @@ class GcrPubSubQueueFake
      *
      * @var Collection
      */
-    protected $acknowledgedMessages;
+    protected Collection $acknowledgedMessages;
 
     /**
      * GcrPubSubQueue constructor.
@@ -28,7 +28,7 @@ class GcrPubSubQueueFake
      */
     public function __construct(PubSubConnector $connector)
     {
-        $this->acknowledgedMessages = collect();
+        $this->acknowledgedMessages = new Collection();
 
         $this->setConnector($connector);
         $this->initializeQueue();

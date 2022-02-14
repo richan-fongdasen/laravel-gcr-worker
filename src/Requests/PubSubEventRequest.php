@@ -4,7 +4,6 @@ namespace RichanFongdasen\GCRWorker\Requests;
 
 use Google\Cloud\PubSub\Message;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Log;
 use RichanFongdasen\GCRWorker\Facade\GcrQueue;
 
 class PubSubEventRequest extends FormRequest
@@ -28,9 +27,7 @@ class PubSubEventRequest extends FormRequest
     {
         $requestData = $this->all();
 
-//        Log::info('PubSub Message Content: '.json_encode($requestData));
-
-        $requestData['message']['data'] = base64_decode($requestData['message']['data']);
+        $requestData['message']['data'] = base64_decode($requestData['message']['data'], true);
 
         $message = new Message($requestData['message']);
 

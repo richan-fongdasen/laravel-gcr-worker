@@ -48,9 +48,6 @@ class GcrPubSubQueue
         $messages = $subscription->pull(['returnImmediately' => true, 'maxMessages' => 10]);
 
         foreach ($messages as $message) {
-            if (!($message instanceof Message)) {
-                continue;
-            }
             if ($message->id() === $original->id()) {
                 return $message;
             }

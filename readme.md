@@ -30,9 +30,10 @@ $ composer require richan-fongdasen/laravel-gcr-worker
 
 ### Laravel version compatibility
 
-| Laravel version | Package version   |
-| :-------------- | :---------------- |
-| 5.7 - 8.x       | 1.x               |
+| Laravel version | Package version |
+|:----------------|:----------------|
+| 5.7 - 8.x       | 1.0 - 1.3       |
+| 8.x - 9.x       | ^1.4            |
 
 ## Configuration
 
