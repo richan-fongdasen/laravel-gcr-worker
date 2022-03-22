@@ -53,7 +53,7 @@ class PubSubEvent
     {
         set_time_limit(config('gcr-worker.max_execution_time'));
 
-        GcrQueue::acknowledge($message);
+//        GcrQueue::acknowledge($message);
 
         $this->createJob($message)->fire();
     }

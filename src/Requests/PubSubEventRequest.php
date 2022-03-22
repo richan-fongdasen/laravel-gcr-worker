@@ -29,9 +29,8 @@ class PubSubEventRequest extends FormRequest
 
         $requestData['message']['data'] = base64_decode($requestData['message']['data'], true);
 
-        $message = new Message($requestData['message']);
-
-        return GcrQueue::pullFreshMessage($message);
+        return new Message($requestData['message']);
+//        return GcrQueue::pullFreshMessage(new Message($requestData['message']));
     }
 
     /**
