@@ -1,91 +1,91 @@
 {
-  "name": "richan-fongdasen/laravel-gcr-worker",
-  "description": "Easily generates RESTful API endpoints in Laravel",
-  "type": "library",
-  "license": "MIT",
-  "homepage": "https://github.com/richan-fongdasen/laravel-gcr-worker",
-  "keywords": [
-    "laravel",
-    "laravel-package"
-  ],
-  "authors": [
-    {
-      "name": "Richan Fongdasen",
-      "email": "richan.fongdasen@gmail.com"
-    }
-  ],
-  "support": {
-    "issues": "https://github.com/richan-fongdasen/laravel-gcr-worker/issues",
-    "source": "https://github.com/richan-fongdasen/laravel-gcr-worker"
-  },
-  "require": {
-    "php": "^7.4|^8.0",
-    "illuminate/queue": "^8.0|^9.0",
-    "illuminate/support": "^8.0|^9.0",
-    "kainxspirits/laravel-pubsub-queue": "^0.6|^0.7"
-  },
-  "require-dev": {
-    "ekino/phpstan-banned-code": "^1.0",
-    "mockery/mockery": "^1.4",
-    "nunomaduro/larastan": "^1.0|^2.0",
-    "orchestra/testbench": "^6.0|^7.0",
-    "phpmd/phpmd": "^2.11",
-    "phpstan/phpstan-deprecation-rules": "^1.0",
-    "phpstan/phpstan-strict-rules": "^1.0",
-    "phpunit/phpunit": "^9.5",
-    "sebastian/phpcpd": "^6.0"
-  },
-  "config": {
-    "sort-packages": true
-  },
-  "autoload": {
-    "psr-4": {
-      "RichanFongdasen\\GCRWorker\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "App\\Jobs\\": "dummies",
-      "RichanFongdasen\\GCRWorker\\Tests\\": "tests/"
-    }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "RichanFongdasen\\GCRWorker\\ServiceProvider"
-      ],
-      "aliases": {
-        "GcrQueue": "RichanFongdasen\\GCRWorker\\Facade\\GcrQueue"
-      }
-    }
-  },
-  "scripts": {
-    "analyse": [
-      "composer check-syntax",
-      "composer phpstan-analysis",
-      "composer phpmd-analysis",
-      "vendor/bin/phpcpd --min-lines=3 --min-tokens=36 src/"
+    "name": "richan-fongdasen/laravel-gcr-worker",
+    "description": "Easily generates RESTful API endpoints in Laravel",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/richan-fongdasen/laravel-gcr-worker",
+    "keywords": [
+        "laravel",
+        "laravel-package"
     ],
-    "check-syntax": [
-      "! find src -type f -name \"*.php\" -exec php -l {} \\; |  grep -v 'No syntax errors'",
-      "! find tests -type f -name \"*.php\" -exec php -l {} \\; |  grep -v 'No syntax errors'"
+    "authors": [
+        {
+            "name": "Richan Fongdasen",
+            "email": "richan.fongdasen@gmail.com"
+        }
     ],
-    "phpstan-analysis": [
-      "vendor/bin/phpstan analyse -c phpstan.neon --no-progress"
-    ],
-    "phpmd-analysis": [
-      "vendor/bin/phpmd src text codesize,controversial,design,naming,unusedcode,.phpmd.cleancode.xml"
-    ],
-    "cov-text": [
-      "phpdbg -qrr vendor/bin/phpunit --coverage-text"
-    ],
-    "cov-html": [
-      "phpdbg -qrr vendor/bin/phpunit --coverage-html coverage"
-    ],
-    "test": [
-      "vendor/bin/phpunit"
-    ]
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "support": {
+        "issues": "https://github.com/richan-fongdasen/laravel-gcr-worker/issues",
+        "source": "https://github.com/richan-fongdasen/laravel-gcr-worker"
+    },
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/queue": "^8.0|^9.0|^10.0",
+        "illuminate/support": "^8.0|^9.0|^10.0",
+        "kainxspirits/laravel-pubsub-queue": "^0.6|^0.7"
+    },
+    "require-dev": {
+        "ekino/phpstan-banned-code": "^1.0",
+        "mockery/mockery": "^1.4",
+        "nunomaduro/larastan": "^1.0|^2.0",
+        "orchestra/testbench": "^6.0|^7.0|^8.0",
+        "phpmd/phpmd": "^2.11",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-strict-rules": "^1.0",
+        "phpunit/phpunit": "^9.5",
+        "sebastian/phpcpd": "^6.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "RichanFongdasen\\GCRWorker\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Jobs\\": "dummies",
+            "RichanFongdasen\\GCRWorker\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RichanFongdasen\\GCRWorker\\ServiceProvider"
+            ],
+            "aliases": {
+                "GcrQueue": "RichanFongdasen\\GCRWorker\\Facade\\GcrQueue"
+            }
+        }
+    },
+    "scripts": {
+        "analyse": [
+            "composer check-syntax",
+            "composer phpstan-analysis",
+            "composer phpmd-analysis",
+            "vendor/bin/phpcpd --min-lines=3 --min-tokens=36 src/"
+        ],
+        "check-syntax": [
+            "! find src -type f -name \"*.php\" -exec php -l {} \\; |  grep -v 'No syntax errors'",
+            "! find tests -type f -name \"*.php\" -exec php -l {} \\; |  grep -v 'No syntax errors'"
+        ],
+        "phpstan-analysis": [
+            "vendor/bin/phpstan analyse -c phpstan.neon --no-progress"
+        ],
+        "phpmd-analysis": [
+            "vendor/bin/phpmd src text codesize,controversial,design,naming,unusedcode,.phpmd.cleancode.xml"
+        ],
+        "cov-text": [
+            "phpdbg -qrr vendor/bin/phpunit --coverage-text"
+        ],
+        "cov-html": [
+            "phpdbg -qrr vendor/bin/phpunit --coverage-html coverage"
+        ],
+        "test": [
+            "vendor/bin/phpunit"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
