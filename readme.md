@@ -1,3 +1,4 @@
+
 ![Build Status](https://github.com/richan-fongdasen/laravel-gcr-worker/workflows/Build/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/richan-fongdasen/laravel-gcr-worker/branch/master/graph/badge.svg)](https://codecov.io/gh/richan-fongdasen/laravel-gcr-worker)
 [![Total Downloads](https://poser.pugx.org/richan-fongdasen/laravel-gcr-worker/d/total.svg)](https://packagist.org/packages/richan-fongdasen/laravel-gcr-worker)
@@ -6,7 +7,7 @@
 
 # Laravel GCR Worker
 
-> Simple background processing implementation with Google Cloud Run
+> Simple background processing implementation with Google Cloud Run and Google Cloud Pub/Sub
 
 ## Synopsis
 
@@ -33,7 +34,7 @@ $ composer require richan-fongdasen/laravel-gcr-worker
 | Laravel version | Package version |
 |:----------------|:----------------|
 | 5.7 - 8.x       | 1.0 - 1.3       |
-| 8.x - 9.x       | ^1.4            |
+| 8.x - 10.x      | ^1.5            |
 
 ## Configuration
 
