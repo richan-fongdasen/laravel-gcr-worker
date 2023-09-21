@@ -21,7 +21,7 @@ class ScheduleRunCommand extends BaseScheduleRunCommand
     public function __construct()
     {
         parent::__construct();
-        
+
         $this->fixStartTime();
     }
 
