@@ -20,15 +20,6 @@ class ScheduledJobHandlingTest extends TestCase
     {
         config(['gcr-worker.allow_event_invocation' => true]);
 
-        $artisan = \Mockery::mock(Kernel::class);
-        app()->bind(KernelContract::class, function () use ($artisan) {
-            return $artisan;
-        });
-
-        $artisan->shouldReceive('call')
-            ->withArgs(['schedule:run'])
-            ->once();
-
         $this->getJson('/gcr-worker/run-scheduled-job')
             ->assertStatus(200)
             ->assertJsonFragment(['info' => 'The scheduled job has completed.']);

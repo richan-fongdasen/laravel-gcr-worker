@@ -4,6 +4,7 @@ namespace RichanFongdasen\GCRWorker;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as Provider;
+use RichanFongdasen\GCRWorker\Console\Commands\ScheduleRunCommand;
 
 class ServiceProvider extends Provider
 {
@@ -33,6 +34,20 @@ class ServiceProvider extends Provider
         if ($configPath !== false) {
             $this->mergeConfigFrom($configPath, 'gcr-worker');
         }
+
+        $this->registerCommands();
+    }
+
+    /**
+     * Register the package's console commands.
+     *
+     * @return void
+     */
+    protected function registerCommands(): void
+    {
+        $this->commands([
+            ScheduleRunCommand::class,
+        ]);
     }
 
     /**

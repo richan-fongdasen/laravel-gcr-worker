@@ -42,12 +42,10 @@ class ScheduledJobController extends BaseController
         $this->increaseExecutionTime();
         $this->increaseMemoryLimit();
 
-        Artisan::call('schedule:run');
+        Artisan::call('gcr-schedule:run');
 
-        $response = [
+        return response()->json([
             'info'   => 'The scheduled job has completed.',
-        ];
-
-        return response()->json($reponse);
+        ]);
     }
 }
