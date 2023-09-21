@@ -2,8 +2,6 @@
 
 namespace RichanFongdasen\GCRWorker\Tests\Feature;
 
-use Illuminate\Contracts\Console\Kernel as KernelContract;
-use Illuminate\Foundation\Console\Kernel;
 use RichanFongdasen\GCRWorker\Tests\TestCase;
 
 class ScheduledJobHandlingTest extends TestCase
