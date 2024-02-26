@@ -14,21 +14,14 @@ on:
 jobs:
   analysis:
 
-
     runs-on: ubuntu-latest
-
-
 
     strategy:
       matrix:
         php: [8.2]
 
-
-
     steps:
       - uses: actions/checkout@v2
-
-
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -36,8 +29,6 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
           coverage: none
-
-
 
       - name: Cache composer dependencies
         uses: actions/cache@v2
@@ -51,12 +42,8 @@ jobs:
             php-${{ matrix.php }}-build-
             php-${{ matrix.php }}-
 
-
-
       - name: Install composer dependencies
         run: composer install --no-interaction --prefer-dist
-
-
 
       - name: Run static analysis
         run: composer analyse
@@ -64,26 +51,18 @@ jobs:
   test:
     name: Test (PHP ${{ matrix.php }})
 
-
     needs:
       - analysis
 
-
     runs-on: ubuntu-latest
-
-
 
     strategy:
       matrix:
         php: [7.4, 8.0, 8.1, '8.2']
 
-
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
@@ -91,8 +70,6 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
           coverage: none
-
-
 
       - name: Cache composer dependencies
         uses: actions/cache@v2
@@ -106,12 +83,8 @@ jobs:
             php-${{ matrix.php }}-build-
             php-${{ matrix.php }}-
 
-
-
       - name: Install composer dependencies
         run: composer install --no-interaction --prefer-dist
-
-
 
       - name: Run PHPUnit tests and generate code coverage
         run: |
@@ -120,34 +93,24 @@ jobs:
   test-coverage:
     name: Test (PHP ${{ matrix.php }})
 
-
     needs:
       - analysis
 
-
     runs-on: ubuntu-latest
-
-
 
     strategy:
       matrix:
         php: [8.2]
 
-
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
-
-
 
       - name: Cache composer dependencies
         uses: actions/cache@v2
@@ -161,18 +124,12 @@ jobs:
             php-${{ matrix.php }}-build-
             php-${{ matrix.php }}-
 
-
-
       - name: Install composer dependencies
         run: composer install --no-interaction --prefer-dist
-
-
 
       - name: Run PHPUnit tests and generate code coverage
         run: |
           vendor/bin/phpunit --coverage-clover=clover.xml
-
-
 
       - name: Upload code coverage results
         run: bash <(curl -s https://codecov.io/bash)
