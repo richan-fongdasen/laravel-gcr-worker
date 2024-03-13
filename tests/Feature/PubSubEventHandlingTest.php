@@ -12,7 +12,7 @@ class PubSubEventHandlingTest extends TestCase
     #[Test]
     public function it_will_return_403_on_unauthorized_pubsub_request()
     {
-        $data = json_decode(file_get_contents(dirname(__DIR__, 2) . '/dummies/message.json'), true);
+        $data = json_decode(file_get_contents(dirname(__DIR__, 2).'/dummies/message.json'), true);
 
         $this->postJson('/gcr-worker/pub-sub/event-handler', $data)
             ->assertStatus(403);
@@ -25,7 +25,7 @@ class PubSubEventHandlingTest extends TestCase
 
         config(['gcr-worker.allow_event_invocation' => true]);
 
-        $data = json_decode(file_get_contents(dirname(__DIR__, 2) . '/dummies/message.json'), true);
+        $data = json_decode(file_get_contents(dirname(__DIR__, 2).'/dummies/message.json'), true);
 
         self::assertNull(Cache::get('dummy-job-status'));
 
