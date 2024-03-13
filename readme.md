@@ -1,5 +1,4 @@
-
-![Build Status](https://github.com/richan-fongdasen/laravel-gcr-worker/workflows/Build/badge.svg?branch=master)
+[![Build](https://github.com/richan-fongdasen/laravel-gcr-worker/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/richan-fongdasen/laravel-gcr-worker/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/richan-fongdasen/laravel-gcr-worker/branch/master/graph/badge.svg)](https://codecov.io/gh/richan-fongdasen/laravel-gcr-worker)
 [![Total Downloads](https://poser.pugx.org/richan-fongdasen/laravel-gcr-worker/d/total.svg)](https://packagist.org/packages/richan-fongdasen/laravel-gcr-worker)
 [![Latest Stable Version](https://poser.pugx.org/richan-fongdasen/laravel-gcr-worker/v/stable.svg)](https://packagist.org/packages/richan-fongdasen/laravel-gcr-worker)
@@ -32,9 +31,9 @@ $ composer require richan-fongdasen/laravel-gcr-worker
 ### Laravel version compatibility
 
 | Laravel version | Package version |
-|:----------------|:----------------|
+| :-------------- | :-------------- |
 | 5.7 - 8.x       | 1.0 - 1.3       |
-| 8.x - 10.x      | ^1.5            |
+| 8.x - 11.x      | ^1.6            |
 
 ## Configuration
 
