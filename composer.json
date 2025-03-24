@@ -1,6 +1,6 @@
 {
     "name": "richan-fongdasen/laravel-gcr-worker",
-    "description": "Easily generates RESTful API endpoints in Laravel",
+    "description": "Google Cloud Run Worker for Laravel",
     "type": "library",
     "license": "MIT",
     "homepage": "https://github.com/richan-fongdasen/laravel-gcr-worker",
@@ -23,11 +23,11 @@
         "illuminate/console": "^8.0|^9.0|^10.0|^11.0|^12.0",
         "illuminate/queue": "^8.0|^9.0|^10.0|^11.0|^12.0",
         "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "kainxspirits/laravel-pubsub-queue": "^0.6|^0.7|^0.8|^0.9"
+        "kainxspirits/laravel-pubsub-queue": "^0.6|^0.7|^0.8|^0.9|^0.10"
     },
     "require-dev": {
-        "ekino/phpstan-banned-code": "^1.0|^3.0",
-        "larastan/larastan": "^1.0|^2.0",
+        "ekino/phpstan-banned-code": "^1.0",
+        "larastan/larastan": "^1.0|^2.0|^3.0",
         "mockery/mockery": "^1.4",
         "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0|^10.0",
         "phpmd/phpmd": "^2.11",
